@@ -20,7 +20,7 @@ byte myIp[]  = { 192, 168, 1, 177 };
 int  serverPort  = 8000;
 int ledPin =  9;
 int t=100;
-char test1='+';
+//char test1='+';
 OSCServer server;
 int destPort=9000;
 byte destIp[]  = { 0, 0, 0, 0 };
