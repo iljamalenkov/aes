@@ -8,8 +8,8 @@
 #define ONE_WIRE_BUS 2
 OneWire oneWire(ONE_WIRE_BUS);
 DallasTemperature sensors(&oneWire);
-#include <LiquidCrystal_I2C.h>
- LiquidCrystal_I2C lcd(0x38,20,4);  // set the LCD address to 0x20 for a 16 chars and 2 line display
+//#include <LiquidCrystal_I2C.h>
+// LiquidCrystal_I2C lcd(0x38,20,4);  // set the LCD address to 0x20 for a 16 chars and 2 line display
 float tempoC,tempiC;
 int RECV_PIN = 11;
 IRsend irsend;
@@ -36,8 +36,8 @@ int i=0;
 int n=1;
 void setup(){ 
  Serial.begin(19200);
-   lcd.init();   // initialize the lcd 
-  lcd.backlight();
+ //  lcd.init();   // initialize the lcd 
+ // lcd.backlight();
  irrecv.enableIRIn(); // Start the receiver
  Ethernet.begin(myMac ,myIp); 
  server.begin(serverPort);
@@ -88,7 +88,7 @@ void loop(){
  if(server.aviableCheck()>0){
  }
  irRecive();
-if ((i%5)==0) lcdRis();
+//if ((i%5)==0) lcdRis();
  if (i>=100) {
   inTemp();
   i=0;
@@ -381,13 +381,13 @@ void inTemp(){
  }
 
 }
-void lcdRis(){
+/*void lcdRis(){
  // lcd.backlight();
  // sensors.requestTemperatures();
  //t tempoC = sensors.getTempCByIndex(0);
  //float tempiC = sensors.getTempCByIndex(1);
  
- lcd.setCursor(0,0);  lcd.print(test1);
+ //lcd.setCursor(0,0);  lcd.print(test1);
 if (test1=='x') test1='+'; else test1='x';
 
  //lcd.setCursor(10,0); lcd.print (hour());lcd.print (":");lcd.print (minute());lcd.print (":");lcd.print (second());
@@ -400,4 +400,4 @@ if (test1=='x') test1='+'; else test1='x';
  lcd.setCursor(5,3); lcd.print ("UP");
  lcd.setCursor(10,3); lcd.print ("DN");
  lcd.setCursor(15,3); lcd.print ("ENTER"); 
-}
+}*/
