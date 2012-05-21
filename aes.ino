@@ -66,7 +66,13 @@ void setup(){
  server.addCallback("/Apple/Ok",&AOk);
  server.addCallback("/Apple/Menu",&AMenu);
  server.addCallback("/Apple/Play",&APlay);
+ server.addCallback("/MTX1",&MTX1);
+ server.addCallback("/MTX2",&MTX2);
+ server.addCallback("/MTX3",&MTX3);
+ server.addCallback("/MTX4",&MTX4);
+ server.addCallback("/MTX5",&MTX5);
  server.addCallback("/TV",&TV);
+ 
  sensors.begin();
 }
 void irRecive(){
@@ -336,6 +342,27 @@ void TV(OSCMessage *_mes){
   
 
  }
+void MTX1(OSCMessage *_mes){
+ float tmpF=_mes->getArgFloat(0);
+  if (tmpF==1) irsend.sendNEC(0x1FEA05F, 32);
+}
+void MTX2(OSCMessage *_mes){
+ float tmpF=_mes->getArgFloat(0);
+  if (tmpF==1) irsend.sendNEC(0x1FEE01F, 32);
+}
+void MTX3(OSCMessage *_mes){
+ float tmpF=_mes->getArgFloat(0);
+  if (tmpF==1) irsend.sendNEC(0x1FE10EF, 32);
+}
+void MTX4(OSCMessage *_mes){
+ float tmpF=_mes->getArgFloat(0);
+  if (tmpF==1) irsend.sendNEC(0x1FE906F, 32);
+}
+void MTX5(OSCMessage *_mes){
+ float tmpF=_mes->getArgFloat(0);
+  if (tmpF==1) irsend.sendNEC(0x1FED827, 32);
+}
+   
  
 void inTemp(){
  sensors.requestTemperatures();
